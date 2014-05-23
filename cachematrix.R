@@ -8,7 +8,7 @@ set <- function(y) {
   inv <<- NULL
 }
 get <- function() x
-setsolve <- function(solve) {inv <<-solve} 
+setsolve <- function(inverse) {inv <<-inverse} 
 getsolve <- function() {inv}
 list(set = set, get = get,setsolve = setsolve, getsolve = getsolve)
 }
