@@ -1,13 +1,13 @@
 
 ## makeCacheMatrix creates a special "matrix" object that can cache its inverse.
 ## The special "matrix" object returned by makeCacheMatrix is a list composed of 4
-## functions:
-## set: 
-## get: returns the matrix x, passed as an argument to the MakeCacheMatrix function
-## setinverse:
-## getinverse: returns either NULL, when MakeCacheMatrix is called for the first time,
- #           or the inverse matrix if MakeCachematrix is called subsequently with
- #           the same matrix x as argument
+## functions: set, get, setinverse and getinverse
+## 
+## get: caches the matrix x, passed as an argument to the MakeCacheMatrix function
+## getinverse: returns NULL, when MakeCacheMatrix is called for the first time 
+ # or if MakeCacheMatrix is called withou a subsequent call of the function cacheSolve,
+ # or caches the inverse of x when MakeCacheMatrix is called following a 
+ #call from cacheSolve
 
 
 makeCacheMatrix <- function(x = matrix()){
@@ -28,17 +28,17 @@ list(set = set, get = get,setinverse = setinverse, getinverse = getinverse)
 # cachesolve retrieves the inverse from the cache.
 
 cacheSolve <- function(x, ...) {
-  
- ## retrieving inv (NULL if it is the first time the 
-  # sequence cachesolve(MakeCacheMatrix) has been called,
-  # the cached inverse matrix if cachesolve(MakeCacheMatrix)
-  #has been previously called with the same matrix as argument
   inv <- x$getinverse()
-  
+#verifying if the inverse matrix has been cached and returning it if that is the case
   if(!is.null(inv)) {
     message("getting cached data")
     return(inv)
   }
+
+##If the inverse matrix has not been cached the original matrix x is retrieved from
+ # the cache function get, its inverse is computed and passed as an argument to
+ # the function set inverse so that it can be cached by getinverse in makeCacheMatrix
+
   data <- x$get()
   inv <- solve(data, ...)
   x$setinverse(inv)
