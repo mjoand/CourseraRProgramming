@@ -7,7 +7,7 @@
 ## getinverse: returns NULL, when MakeCacheMatrix is called for the first time 
  # or if MakeCacheMatrix is called withou a subsequent call of the function cacheSolve,
  # or caches the inverse of x when MakeCacheMatrix is called following a 
- #call from cacheSolve
+ #call from cacheSolve.
 
 
 makeCacheMatrix <- function(x = matrix()){
