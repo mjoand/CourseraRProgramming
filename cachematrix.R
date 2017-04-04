@@ -1,7 +1,7 @@
 
 ## makeCacheMatrix creates a special "matrix" object that can cache its inverse.
 ## The special "matrix" object returned by makeCacheMatrix is a list composed of 4
-## functions: set, get, setinverse and getinverse
+## functions: set, get, setinverse and getinverse.
 ## 
 ## get: caches the matrix x, passed as an argument to the MakeCacheMatrix function
 ## getinverse: returns NULL, when MakeCacheMatrix is called for the first time 
